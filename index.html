@@ -12,6 +12,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
     <style>
+        /* [추가] 더 나은 레이아웃 계산을 위해 box-sizing 적용 */
         html {
             box-sizing: border-box;
         }
@@ -20,7 +21,7 @@
         }
 
         body {
-            /* [수정] 기본 폰트를 'Pretendard'로 변경. 'Malgun Gothic'은 폴백. */
+            /* [수정] 기본 폰트를 'Pretendard'로 변경 */
             font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
             display: flex;
             justify-content: center;
@@ -36,7 +37,7 @@
             overflow-x: hidden;
         }
         
-        /* 폼 요소들도 body의 기본 폰트를 상속받도록 설정 (유지) */
+        /* [추가] 폼 요소들도 body의 기본 폰트를 상속받도록 설정 */
         input, button, textarea {
             font-family: inherit;
         }
@@ -64,10 +65,10 @@
             color: #FF5B91;
             margin-bottom: 20px;
             
-            /* <h1>에만 디자인 폰트 'Jua' 적용 (유지) */
+            /* [수정] <h1>에만 디자인 폰트 'Jua' 적용 */
             font-family: 'Jua', sans-serif;
-            font-size: 2.8em; 
-            font-weight: normal; 
+            font-size: 2.8em; /* 폰트 크기 살짝 조절 */
+            font-weight: normal; /* Jua 폰트는 자체가 굵어서 normal로 설정 */
             
             text-align: center;
         }
@@ -170,7 +171,7 @@
             color: #555;
             border-bottom: 2px solid #f0f0f0;
             padding-bottom: 10px;
-            font-weight: bold; 
+            font-weight: bold; /* [추가] 제목 폰트 굵게 */
         }
 
         .controls-panel label {
@@ -474,7 +475,7 @@
                     initializeTextarea();
                 }
             } else {
-                initializeTextara();
+                initializeTextarea();
             }
         }
 
