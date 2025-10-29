@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모미지가리 가챠! (업데이트)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    
     <style>
         /* [추가] 더 나은 레이아웃 계산을 위해 box-sizing 적용 */
         html {
@@ -14,15 +19,15 @@
         }
 
         body {
+            /* [수정] 기본 폰트를 'Malgun Gothic'으로 통일 */
             font-family: 'Malgun Gothic', sans-serif;
             display: flex;
             justify-content: center;
             
-            /* [수정] 모바일 기본값을 세로 정렬로 변경 */
             flex-direction: column;
             align-items: center;
-            gap: 40px; /* 모바일용 갭 */
-            padding: 20px; /* 모바일용 좌우 패딩 */
+            gap: 40px;
+            padding: 20px;
             
             min-height: 100vh;
             margin: 0;
@@ -30,7 +35,11 @@
             overflow-x: hidden;
         }
         
-        /* [추가] 화면이 900px 이상일 때 (PC) 원래 레이아웃 적용 */
+        /* [추가] 폼 요소들도 body의 기본 폰트를 상속받도록 설정 */
+        input, button, textarea {
+            font-family: inherit;
+        }
+
         @media (min-width: 900px) {
             body {
                 flex-direction: row;
@@ -46,8 +55,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            
-            /* [수정] 고정 너비 대신 유연한 너비로 변경 */
             width: 100%;
             max-width: 450px;
         }
@@ -55,26 +62,28 @@
         h1 {
             color: #FF5B91;
             margin-bottom: 20px;
-            font-weight: bold;
-            font-size: 2.5em;
-            text-align: center; /* [추가] 모바일에서 제목이 중앙에 오도록 */
+            
+            /* [수정] <h1>에만 디자인 폰트 'Jua' 적용 */
+            font-family: 'Jua', sans-serif;
+            font-size: 2.8em; /* 폰트 크기 살짝 조절 */
+            font-weight: normal; /* Jua 폰트는 자체가 굵어서 normal로 설정 */
+            
+            text-align: center;
         }
 
         #result-text {
             font-size: 1.5em;
             font-weight: bold;
             color: #333;
-            height: auto; /* [수정] 결과 텍스트가 길어질 경우 대비 */
+            height: auto;
             min-height: 30px;
             margin-bottom: 20px;
-            text-align: center; /* [추가] */
+            text-align: center;
         }
 
         .wheel-container {
             position: relative;
             margin-bottom: 30px;
-            
-            /* [추가] 캔버스 크기에 맞춰 유연하게 조절 */
             width: 100%;
             max-width: 400px;
         }
@@ -83,8 +92,6 @@
             border: 5px solid #fff;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-radius: 50%;
-            
-            /* [추가] 캔버스가 부모 요소에 맞춰 반응형으로 크기 조절 */
             width: 100%;
             height: auto;
             max-width: 400px;
@@ -109,7 +116,7 @@
             margin-bottom: 20px;
             width: 100%;
             justify-content: center;
-            flex-wrap: wrap; /* [추가] 화면이 좁을 때 버튼이 세로로 쌓이도록 */
+            flex-wrap: wrap;
         }
         
         #bet-amount {
@@ -118,17 +125,14 @@
             font-weight: bold;
             border: 2px solid #ddd;
             border-radius: 30px;
-            
-            /* [수정] 너비를 좀 더 유연하게 */
             width: 150px;
-            max-width: 40%; /* [추가] */
-            min-width: 120px; /* [추가] */
-            
+            max-width: 40%;
+            min-width: 120px;
             text-align: center;
         }
         
         #spin-btn {
-            padding: 15px 30px; /* [수정] 패딩 약간 조절 */
+            padding: 15px 30px;
             font-size: 1.1em;
             font-weight: bold;
             color: white;
@@ -137,8 +141,6 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
-            
-            /* [추가] 유연한 너비 */
             flex-grow: 1;
             min-width: 120px;
         }
@@ -148,10 +150,8 @@
         }
 
         .sidebar {
-            /* [수정] 고정 너비 대신 유연한 너비로 변경 */
             width: 100%;
             max-width: 350px;
-            
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -169,6 +169,7 @@
             color: #555;
             border-bottom: 2px solid #f0f0f0;
             padding-bottom: 10px;
+            font-weight: bold; /* [추가] 제목 폰트 굵게 */
         }
 
         .controls-panel label {
@@ -181,13 +182,13 @@
         #items-textarea {
             width: 100%;
             height: 150px;
-            font-family: 'Consolas', 'Courier New', monospace;
+            /* [제거] 폰트 통일을 위해 monospace 폰트 지정 제거
+            font-family: 'Consolas', 'Courier New', monospace; 
+            */
             font-size: 14px;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 10px;
-            /* [수정] box-sizing이 이미 부모에서 상속됨 (제거 가능) */
-            /* box-sizing: border-box; */ 
             resize: vertical;
         }
 
@@ -195,12 +196,12 @@
             display: flex;
             gap: 10px;
             margin-top: 10px;
-            flex-wrap: wrap; /* [추가] 좁은 화면에서 버튼 세로 배치 */
+            flex-wrap: wrap;
         }
         
         #update-btn, #copy-link-btn {
-            flex: 1; /* [수정] flex-grow: 1과 동일 */
-            min-width: 120px; /* [추가] 버튼 최소 너비 보장 */
+            flex: 1;
+            min-width: 120px;
             padding: 12px;
             font-size: 16px;
             font-weight: bold;
@@ -229,8 +230,6 @@
             padding: 8px 12px;
             font-size: 15px;
             border-bottom: 1px solid #f4f4f4;
-            
-            /* [추가] 긴 텍스트가 잘리도록 */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -247,7 +246,7 @@
 <body>
 
     <div class="main-content">
-        <h1>🍁 <b>모미지가리 가챠!</b></h1>
+        <h1>🍁 모미지가리 가챠!</h1>
         
         <p id="result-text">SPIN 버튼을 눌러주세요!</p>
 
@@ -302,7 +301,6 @@
         const PI = Math.PI;
         const TAU = 2 * PI;
         
-        /* [수정] 캔버스 해상도는 400으로 유지하되, CSS가 크기를 조절합니다. */
         const wheelRadius = canvas.width / 2; 
         const centerX = wheelRadius;
         const centerY = wheelRadius;
@@ -330,7 +328,10 @@
                 ctx.rotate(currentAngle + sliceAngle / 2);
                 ctx.textAlign = "center";
                 ctx.fillStyle = "#444";
-                ctx.font = "bold 16px Malgun Gothic";
+                
+                // [수정] 캔버스 내부 폰트도 'Malgun Gothic'으로 통일
+                ctx.font = "bold 16px 'Malgun Gothic'";
+                
                 ctx.fillText(item.name, wheelRadius * 0.65, 5);
                 ctx.restore();
                 currentAngle += sliceAngle;
