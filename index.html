@@ -75,8 +75,6 @@
             min-height: 30px;
             margin-bottom: 20px;
             text-align: center;
-            
-            /* [추가] 색상 변경 시 부드럽게 전환되도록 */
             transition: color 0.3s ease;
         }
 
@@ -350,12 +348,11 @@
                         const winnings = Math.round(bet * multiplier);
                         const profit = winnings - bet;
                         
-                        let resultString = ""; // [수정] 문자열 초기화
+                        let resultString = ""; 
 
-                        // [수정] 당첨 결과에 따라 텍스트와 색상 변경
                         if (winner.name === "꽝" || winner.name === "0.5배") {
-                            // 손해 (진한 분홍색)
-                            resultString = `${winner.name}! ${winnings}P 남은 P! (${profit > 0 ? '+' : ''}${profit}P)`;
+                            // [수정] 텍스트 형식을 "이름! 남은 포인트 X P! (Y P)"로 변경
+                            resultString = `${winner.name}! 남은 포인트 ${winnings}P! (${profit > 0 ? '+' : ''}${profit}P)`;
                             resultText.style.color = "#d9534f"; // 'loss' 색상
                         } else if (winner.name === "2배" || winner.name === "4배") {
                             // 이득 (초록색)
@@ -521,10 +518,7 @@
             isSpinning = true;
             spinBtn.disabled = true;
             resultText.textContent = `${bet}P 베팅! 돌아가는 중...`;
-            
-            // [추가] 스핀 시작 시 텍스트 색상 기본값으로 초기화
             resultText.style.color = "#333"; 
-            
             spinVelocity = Math.random() * 0.25 + 0.4;
         });
         
