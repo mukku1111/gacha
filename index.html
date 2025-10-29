@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
     <style>
-        /* [추가] 더 나은 레이아웃 계산을 위해 box-sizing 적용 */
         html {
             box-sizing: border-box;
         }
@@ -19,8 +20,8 @@
         }
 
         body {
-            /* [수정] 기본 폰트를 'Malgun Gothic'으로 통일 */
-            font-family: 'Malgun Gothic', sans-serif;
+            /* [수정] 기본 폰트를 'Pretendard'로 변경. 'Malgun Gothic'은 폴백. */
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
             display: flex;
             justify-content: center;
             
@@ -35,7 +36,7 @@
             overflow-x: hidden;
         }
         
-        /* [추가] 폼 요소들도 body의 기본 폰트를 상속받도록 설정 */
+        /* 폼 요소들도 body의 기본 폰트를 상속받도록 설정 (유지) */
         input, button, textarea {
             font-family: inherit;
         }
@@ -63,10 +64,10 @@
             color: #FF5B91;
             margin-bottom: 20px;
             
-            /* [수정] <h1>에만 디자인 폰트 'Jua' 적용 */
+            /* <h1>에만 디자인 폰트 'Jua' 적용 (유지) */
             font-family: 'Jua', sans-serif;
-            font-size: 2.8em; /* 폰트 크기 살짝 조절 */
-            font-weight: normal; /* Jua 폰트는 자체가 굵어서 normal로 설정 */
+            font-size: 2.8em; 
+            font-weight: normal; 
             
             text-align: center;
         }
@@ -169,7 +170,7 @@
             color: #555;
             border-bottom: 2px solid #f0f0f0;
             padding-bottom: 10px;
-            font-weight: bold; /* [추가] 제목 폰트 굵게 */
+            font-weight: bold; 
         }
 
         .controls-panel label {
@@ -182,9 +183,6 @@
         #items-textarea {
             width: 100%;
             height: 150px;
-            /* [제거] 폰트 통일을 위해 monospace 폰트 지정 제거
-            font-family: 'Consolas', 'Courier New', monospace; 
-            */
             font-size: 14px;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -329,8 +327,8 @@
                 ctx.textAlign = "center";
                 ctx.fillStyle = "#444";
                 
-                // [수정] 캔버스 내부 폰트도 'Malgun Gothic'으로 통일
-                ctx.font = "bold 16px 'Malgun Gothic'";
+                // [수정] 캔버스 내부 폰트도 'Pretendard'로 통일
+                ctx.font = "bold 16px 'Pretendard'";
                 
                 ctx.fillText(item.name, wheelRadius * 0.65, 5);
                 ctx.restore();
@@ -476,7 +474,7 @@
                     initializeTextarea();
                 }
             } else {
-                initializeTextarea();
+                initializeTextara();
             }
         }
 
